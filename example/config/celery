@@ -1,0 +1,16 @@
+# https://docs.celeryproject.org/en/4.4.2/userguide/daemonizing.html#usage-systemd
+CELERYD_NODES="w1"
+CELERY_BIN="/home/ec2-user/.local/bin/celery"
+CELERY_APP="run"
+
+# Extra command-line arguments to the worker
+CELERYD_OPTS="--time-limit=300 -c 1 -Q sandbox"
+
+# - %n will be replaced with the first part of the nodename.
+# - %I will be replaced with the current child process index
+#   and is important when using the prefork pool to avoid race conditions.
+CELERYD_PID_FILE="/home/ec2-user/celery/%n.pid"
+CELERYD_LOG_FILE="/home/ec2-user/celery/%n%I.log"
+CELERYD_LOG_LEVEL="INFO"
+REDIS_URL="redis://"
+AMQP_URL="amqp://"

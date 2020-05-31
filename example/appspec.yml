@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/CodeInterviewSandbox/
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 300
+  ApplicationStart:
+    - location: scripts/install_requirements.sh
+    - location: scripts/build_image.sh
+    - location: scripts/configure_daemon.sh
+    - location: scripts/start_worker.sh
+      timeout: 300

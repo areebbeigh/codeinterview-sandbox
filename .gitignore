@@ -1,0 +1,6 @@
+.vscode
+user-code
+test.py
+*.log
+*.pyc
+__pycache__

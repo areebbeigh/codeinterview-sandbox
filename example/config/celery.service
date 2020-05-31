@@ -1,0 +1,23 @@
+[Unit]
+Description=Celery Service
+After=network.target
+
+[Service]
+User=ec2-user
+Group=ec2-user
+Type=forking
+EnvironmentFile=/etc/conf.d/celery
+WorkingDirectory=/home/ec2-user/CodeInterviewSandbox/
+
+ExecStart=/bin/sh -c '${CELERY_BIN} multi start ${CELERYD_NODES} -A run \
+  --logfile=${CELERYD_LOG_FILE} --loglevel=${CELERYD_LOG_LEVEL} \
+  --pidfile=${CELERYD_PID_FILE} ${CELERYD_OPTS}'
+
+ExecStop=/bin/sh -c '${CELERY_BIN} multi stopwait ${CELERYD_NODES} --pidfile=${CELERYD_PID_FILE}'
+
+ExecReload=/bin/sh -c '${CELERY_BIN} multi restart ${CELERYD_NODES} -A ${CELERY_APP} \
+  --logfile=${CELERYD_LOG_FILE} --loglevel=${CELERYD_LOG_LEVEL} --pidfile=${CELERYD_PID_FILE} \
+  ${CELERYD_OPTS}'
+
+[Install]
+WantedBy=multi-user.target
