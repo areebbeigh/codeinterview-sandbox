@@ -30,8 +30,11 @@ def run_user_code(language, code, stdin):
         error_msg = f'[{e.__class__.__name__}] {e}'
 
     try:
-        with open(sandbox.output_file_path, 'r') as f:
-            output = f.read()
+        if not error:
+            with open(sandbox.output_file_path, 'r') as f:
+                output = f.read()
+        else:
+            output = ''
     except Exception as e:
         output = ''
 
