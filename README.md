@@ -66,7 +66,7 @@ s = Sandbox()
 s.run('python3.6', code, 'xyz') # 'hello world! xyz' -> user-code/<uuid>/output.txt
 ```
 
-Example deployment config and scripts are provided in `example/`.
+Example AWS deployment config and scripts are provided in `example/`.
 
 ## Contributing
 Start by creating an issue describing your suggestion/idea/bug and we can take it from there! :)
