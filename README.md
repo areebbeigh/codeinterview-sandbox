@@ -56,6 +56,27 @@ LANG_CONFIG = {
 USER_CODE_DIR = os.path.join(SANDBOX_DIR, 'user-code')
 ```
 
+## Adding a language
+Two files need to be modified to add a language - `sandbox/Dockerfile` and `sandbox/settings.py:LANG_CONFIG`.
+- Add the instructions for installing all language dependencies in `sandbox/Dockerfile`
+- Add the instructions to compile and run (in a single command) a code file in given language.
+
+Eg for python:
+
+- Add `apt-get install -y python3.6` to the dockerfile.
+- And to the settings file:
+```python3
+LANG_CONFIG = {
+    ...
+    'python3.6': {
+        # Runs as (python3.6 code.py) > output.txt in the container
+        'compile': lambda name: f'(python3.6 {name})'.split(' '),
+        'extension': 'py'
+    },
+}
+```
+
+
 ## Example
 
 ```python3
