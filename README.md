@@ -9,7 +9,7 @@ for use with another interface.
 ## How it works
 You must already have [docker](https://docker.io) installed (and optionally [gVisor](https://gvisor.dev/docs/) for securing your kernel).
 Sandbox creates (and later destroys) a new container for every run request. The container is created from the already 
-build image `sandbox/Dockerfile` with all the supported languages and dependencies. 
+built image `sandbox/Dockerfile` with all the supported languages and dependencies. 
 
 The output of the code is written directly into `{USER_CODE_DIR}/<sandbox uuid>/output.txt` and deleted once the sandbox
 is deleted (`__del__()`) by the garbage collector.
