@@ -89,6 +89,12 @@ s.run('python3.6', code, 'xyz') # 'hello world! xyz' -> user-code/<uuid>/output.
 
 Example AWS deployment config and scripts are provided in `example/`.
 
+## Alternatives
+This sandbox might not be what you're looking for. In that case, I've listen some similar projects below. :)
+
+- [judge0 API](https://github.com/judge0/api) is a robust and scalable open-source online code execution system.
+- [isolate](https://github.com/ioi/isolate) is a sandbox built to safely run untrusted executables, offering them a limited-access environment and preventing them from affecting the host system. It takes advantage of features specific to the Linux kernel, like namespaces and control groups.
+
 ## Contributing
 Start by creating an issue describing your suggestion/idea/bug and we can take it from there! :)
 
